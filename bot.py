@@ -6,7 +6,8 @@ import time
 from urllib.parse import parse_qs, unquote
 import requests
 from datetime import datetime
-
+from datetime import datetime
+from colorama import init, Fore, Back, Style
 from birdx import Birdx
 
 def print_(word):
