@@ -174,13 +174,19 @@ class Birdx():
                 print_(f"Status Mint Worm : {status}")
                 if status == "MINT_OPEN":
                     data_mint = self.mint_worm(query)
+                    data_user = self.get_user_info(query)
                     if data_mint is not None:
+                        user = data_user.get('name',{})
+                        user = data_user.get('telegramId',{})
+                        user = data_user.get('telegramUserName',{})
                         minted = data_mint.get('minted',{})
                         message = data_mint.get('message','')
                         if message == 'SUCCESS':
                             print_(f"Data Worm : Type {minted.get('type','')} | reward {minted.get('reward',0)}")
+                            print_(f"Data User : {user.get('name',{})} | {user.get('telegramId',{})} | {user.get('telegramUserName',{})} ")
                         else:
-                            print_(f"Mint Worm : {message}")
+                            print_(f" Mint Worm : {message}")
+                            print_(f"Data User : {user.get('name',{})} | {user.get('telegramId',{})} | {user.get('telegramUserName',{})} ")
 
                 else:
                     if nextMintTime is not None:
@@ -199,6 +205,7 @@ class Birdx():
         headers['authorization'] = f"tma {query}"
         try:
             response = make_request('post', url, headers)
+            
             return response
         except requests.RequestException as e:
             print(f"Failed to fetch user data for token. Error: {e}")
