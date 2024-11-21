@@ -176,17 +176,17 @@ class Birdx():
                     data_mint = self.mint_worm(query)
                     data_user = self.get_user_info(query)
                     if data_mint is not None:
-                        user = data_user.get('name',{})
-                        user = data_user.get('telegramId',{})
-                        user = data_user.get('telegramUserName',{})
+                        name = data_user.get('name',{})
+                        id = data_user.get('telegramId',{})
+                        username = data_user.get('telegramUserName',{})
                         minted = data_mint.get('minted',{})
                         message = data_mint.get('message','')
                         if message == 'SUCCESS':
                             print_(f"Data Worm : Type {minted.get('type','')} | reward {minted.get('reward',0)}")
-                            print_(f"Data User : {user.get('name',{})} | {user.get('telegramId',{})} | {user.get('telegramUserName',{})} ")
+                            print_(f"Data User : {name.get('name',{})} | {id.get('telegramId',{})} | {username.get('telegramUserName',{})} ")
                         else:
                             print_(f" Mint Worm : {message}")
-                            print_(f"Data User : {user.get('name',{})} | {user.get('telegramId',{})} | {user.get('telegramUserName',{})} ")
+                            print_(f"Data User : {name.get('name',{})} | {id.get('telegramId',{})} | {username.get('telegramUserName',{})} ")
 
                 else:
                     if nextMintTime is not None:
