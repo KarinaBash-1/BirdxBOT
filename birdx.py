@@ -97,66 +97,6 @@ class Birdx():
             print(f"Failed to fetch user data for token. Error: {e}")
             return None
     
-    def clear_task(self, query):
-        url = "https://api.birds.dog/project"
-        headers = self.headers
-        headers['telegramauth'] = f"tma {query}"
-        try:
-            response = make_request('get', url, headers)
-            list_task_complete = self.check_task_completion(query)
-            if response is not None:
-                for task in response:
-                    if task.get('is_enable'):
-                        print_(f"Name : {task.get('name','')}")
-                        detail_task = task.get('tasks',[])
-                        for detail in detail_task:
-                            id = detail.get('_id',"")
-                            if id in list_task_complete:
-                                print_(f"Task {detail.get('title')} : Done")
-                            else:
-                                print_(f"Starting Task {detail.get('title')}")
-                                self.join_task(query, detail)
-
-        except requests.RequestException as e:
-            print(f"Failed to fetch user data for token. Error: {e}")
-            return None
-    
-    def check_task_completion(self, query):
-        url = "https://api.birds.dog/user-join-task/"
-        headers = self.headers
-        headers['telegramauth'] = f"tma {query}"
-        try:
-            list = []
-            response = make_request('get', url, headers)
-            if response is not None:
-                for data in response:
-                    task_id = data.get('taskId','')
-                    list.append(task_id)
-                return list
-            else:
-                return None
-        except requests.RequestException as e:
-            print(f"Failed to fetch user data for token. Error: {e}")
-            return None
-    
-    def join_task(self, query, detail):
-        url = 'https://api.birds.dog/project/join-task'
-        headers = self.headers
-        headers['telegramauth'] = f"tma {query}"
-        payload = {"taskId":detail.get('_id'),
-                   "channelId":detail.get('channelId'),
-                   "slug":detail.get('slug'),
-                   "point":detail.get('point')}
-        try:
-            list = []
-            response = make_request('post', url, headers, json=payload)
-            if response is not None:
-                print_(f"Task {detail.get('title')} {response.get('msg')}")
-            return list
-        except requests.RequestException as e:
-            print(f"Failed to fetch user data for token. Error: {e}")
-            return None
-    
     def join_game(self, query):
         url = 'https://api.birds.dog/minigame/egg/join'
         headers = self.headers
