@@ -5,6 +5,8 @@ import time
 from urllib.parse import parse_qs, unquote
 import requests
 from datetime import datetime
+from colorama import init, Fore, Back, Style
+
 def print_(word):
     now = datetime.now().isoformat(" ").split(".")[0]
     print(f"[{now}] {word}")
@@ -182,11 +184,11 @@ class Birdx():
                         minted = data_mint.get('minted',{})
                         message = data_mint.get('message','')
                         if message == 'SUCCESS':
-                            print_(f"Data Worm : Type {minted.get('type','')} | reward {minted.get('reward',0)}")
-                            print_(f"Data User : {name} | {id} | {username} ")
+                            print_(Fore.BLUE + Style.BRIGHT  f"Data Worm : Type {minted.get('type','')} | reward {minted.get('reward',0)}")
+                            print_(Fore.BLUE + Style.BRIGHT  f"Data User : {name} | {id} | {username} ")
                         else:
-                            print_(f" Mint Worm : {message}")
-                            print_(f"Data User : {name} | {id} | {username} ")
+                            print_( Fore.GREEN + Style.BRIGHT f" Mint Worm : {message}")
+                            print_( Fore.GREEN + Style.BRIGHT f"Data User : {name} | {id} | {username} ")
 
                 else:
                     if nextMintTime is not None:
