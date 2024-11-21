@@ -183,10 +183,10 @@ class Birdx():
                         message = data_mint.get('message','')
                         if message == 'SUCCESS':
                             print_(f"Data Worm : Type {minted.get('type','')} | reward {minted.get('reward',0)}")
-                            print_(f"Data User : {name.get('name',{})} | {id.get('telegramId',{})} | {username.get('telegramUserName',{})} ")
+                            print_(f"Data User : {name} | {id} | {username} ")
                         else:
                             print_(f" Mint Worm : {message}")
-                            print_(f"Data User : {name.get('name',{})} | {id.get('telegramId',{})} | {username.get('telegramUserName',{})} ")
+                            print_(f"Data User : {name} | {id} | {username} ")
 
                 else:
                     if nextMintTime is not None:
