@@ -42,9 +42,6 @@ def remaining_time(times):
     return f"Remaining Time Upgrade : {int(hours)} Hours {int(minutes)} Minutes {int(seconds)} Seconds"
 
 def main():
-    selector_worm = input("auto catch worm y/n : ").strip().lower()
-    selector_task = input("auto clear task y/n  : ").strip().lower()
-    selector_games = input("auto playing games y/n  : ").strip().lower()
     
     clear_terminal()
     while True:
@@ -67,8 +64,6 @@ def main():
 
                 if incubationSpent == 0:
                     birdx.upgraded(query)
-                
-                if selector_worm == "y":
                     print_('Getting Worm...')
                     birdx.mint_status(query)
 
@@ -92,21 +87,11 @@ def main():
                                 birdx.upgraded(query)
                     else:
                         print_(remaining_time((upgradedAt+upgrade_time) - now))
-            
-
-                if selector_task == "y":
-                    print_("Start Clear Quest")
-                    birdx.clear_task(query)
-                
-                if selector_games == "y":
                     print_("Start Playing Game")
                     birdx.join_game(query)
-                
 
             else:
                 print_('User Not Found')
-
-
 
         end_time = time.time()
         total = delay - (end_time-start_time)
