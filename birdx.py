@@ -184,11 +184,11 @@ class Birdx():
                         minted = data_mint.get('minted',{})
                         message = data_mint.get('message','')
                         if message == 'SUCCESS':
-                            print_(Fore.BLUE + Style.BRIGHT  f"Data Worm : Type {minted.get('type','')} | reward {minted.get('reward',0)}")
-                            print_(Fore.BLUE + Style.BRIGHT  f"Data User : {name} | {id} | {username} ")
+                            print_(Fore.BLUE + Style.BRIGHT + f"Data Worm : Type {minted.get('type', '')} | Reward {minted.get('reward', 0)}")
+                            print_(Fore.BLUE + Style.BRIGHT + f"Data User : {name} | {id} | {username}")
                         else:
-                            print_( Fore.GREEN + Style.BRIGHT f" Mint Worm : {message}")
-                            print_( Fore.GREEN + Style.BRIGHT f"Data User : {name} | {id} | {username} ")
+                            print_( Fore.GREEN + Style.BRIGHT + f" Mint Worm : {message}")
+                            print_( Fore.GREEN + Style.BRIGHT + f"Data User : {name} | {id} | {username} ")
 
                 else:
                     if nextMintTime is not None:
